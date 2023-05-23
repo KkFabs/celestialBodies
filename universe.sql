@@ -251,6 +251,27 @@ INSERT INTO public.galaxy VALUES (7, 'TRET2X00L', 'Are embedded in huge haloes o
 -- Data for Name: moon; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.moon VALUES (1, '10T0cx0L', 'Are embedded in huge haloes of dark matter', 400741, false, true, 40, 833.3, 1);
+INSERT INTO public.moon VALUES (2, 'cx0L', 'Are  matter', 670741, true, true, 760, 693.3, 12);
+INSERT INTO public.moon VALUES (3, '100L', 'Are embedded', 22741, false, false, 67, 973.3, 10);
+INSERT INTO public.moon VALUES (4, 'zzxce', 'huge haloes of dark matter', 400741, false, true, 990, 700.3, 9);
+INSERT INTO public.moon VALUES (5, '10i6r0L', 'Ahaloes', 78641, true, false, 140, 887.5, 13);
+INSERT INTO public.moon VALUES (6, 'q0T0cx0L', 'Are embematter', 905748, true, true, 487, 213.3, 11);
+INSERT INTO public.moon VALUES (7, '100tq', 'Auytrmatter', 940741, true, false, 5486, 833.3, 2);
+INSERT INTO public.moon VALUES (8, 'fu0L', 'in huge haloes', 980531, true, true, 321, 543.0, 6);
+INSERT INTO public.moon VALUES (9, 'wxcx0L', 'reembed in haloes matter', 99741, false, false, 549, 907.6, 3);
+INSERT INTO public.moon VALUES (10, 'ytw0cx0L', 'Areof dark matter', 900741, true, true, 4240, 133.3, 8);
+INSERT INTO public.moon VALUES (11, '10cx054', 'Are haloes of darmatter', 740741, false, false, 4409, 89.3, 5);
+INSERT INTO public.moon VALUES (12, 'hdtex345', 'huge darker', 90874, true, true, 653, 103.9, 7);
+INSERT INTO public.moon VALUES (13, '10Tyezcx23', 'Are embedded haloes', 400741, true, true, 234, 789.7, 4);
+INSERT INTO public.moon VALUES (14, 'zmpox0L', 'Ardark er', 810041, false, true, 4420, 232.1, 13);
+INSERT INTO public.moon VALUES (15, 'nty10T0cx0L', 'utArehithaloes of dark ', 240920, false, false, 40, 543.0, 10);
+INSERT INTO public.moon VALUES (16, 'qpjdcx0L', 'Areembeddedin hugematter', 7879, false, false, 2400, 403.7, 9);
+INSERT INTO public.moon VALUES (17, '234cx0L', 'matter', 230741, false, false, 210, 120.9, 11);
+INSERT INTO public.moon VALUES (18, 'vbrew1cx0L', 'emof dark', 98345, false, true, 984, 875.5, 1);
+INSERT INTO public.moon VALUES (19, 'wtd010T0cx0L', 'sqahaloes mattr', 1400741, true, false, 40, 833.3, 3);
+INSERT INTO public.moon VALUES (20, '0pp10T0cx0L', 'hyehaloeofdarmatter', 90642, false, true, 6707, 389.6, 8);
+INSERT INTO public.moon VALUES (21, '7777777xd', '77777777777edded in huge haloes of dark matter', 77741, true, false, 77, 777.7, 7);
 
 
 --
@@ -296,7 +317,7 @@ SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 7, true);
 -- Name: moon_moon_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.moon_moon_id_seq', 1, false);
+SELECT pg_catalog.setval('public.moon_moon_id_seq', 21, true);
 
 
 --
