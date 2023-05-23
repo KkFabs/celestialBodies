@@ -144,18 +144,6 @@ CREATE TABLE public.planet (
 ALTER TABLE public.planet OWNER TO freecodecamp;
 
 --
--- Name: planet_and_moon; Type: TABLE; Schema: public; Owner: freecodecamp
---
-
-CREATE TABLE public.planet_and_moon (
-    planet_id integer NOT NULL,
-    moon_id integer NOT NULL
-);
-
-
-ALTER TABLE public.planet_and_moon OWNER TO freecodecamp;
-
---
 -- Name: planet_planet_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
 --
 
@@ -175,6 +163,46 @@ ALTER TABLE public.planet_planet_id_seq OWNER TO freecodecamp;
 --
 
 ALTER SEQUENCE public.planet_planet_id_seq OWNED BY public.planet.planet_id;
+
+
+--
+-- Name: solar_system; Type: TABLE; Schema: public; Owner: freecodecamp
+--
+
+CREATE TABLE public.solar_system (
+    solar_system_id integer NOT NULL,
+    name character varying(60) NOT NULL,
+    escape_velocity_in_km_per_sec numeric(4,1),
+    has_life boolean,
+    produces_light boolean,
+    satellites integer,
+    position_from_sun integer NOT NULL,
+    description text
+);
+
+
+ALTER TABLE public.solar_system OWNER TO freecodecamp;
+
+--
+-- Name: solar_system_solar_system_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
+--
+
+CREATE SEQUENCE public.solar_system_solar_system_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.solar_system_solar_system_id_seq OWNER TO freecodecamp;
+
+--
+-- Name: solar_system_solar_system_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
+--
+
+ALTER SEQUENCE public.solar_system_solar_system_id_seq OWNED BY public.solar_system.solar_system_id;
 
 
 --
@@ -237,6 +265,13 @@ ALTER TABLE ONLY public.moon ALTER COLUMN moon_id SET DEFAULT nextval('public.mo
 --
 
 ALTER TABLE ONLY public.planet ALTER COLUMN planet_id SET DEFAULT nextval('public.planet_planet_id_seq'::regclass);
+
+
+--
+-- Name: solar_system solar_system_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.solar_system ALTER COLUMN solar_system_id SET DEFAULT nextval('public.solar_system_solar_system_id_seq'::regclass);
 
 
 --
@@ -306,13 +341,14 @@ INSERT INTO public.planet VALUES (13, 'zzT0cx0L', 'Are dark matter', 8741, false
 
 
 --
--- Data for Name: planet_and_moon; Type: TABLE DATA; Schema: public; Owner: freecodecamp
+-- Data for Name: solar_system; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.planet_and_moon VALUES (7, 12);
-INSERT INTO public.planet_and_moon VALUES (7, 21);
-INSERT INTO public.planet_and_moon VALUES (9, 16);
-INSERT INTO public.planet_and_moon VALUES (9, 4);
+INSERT INTO public.solar_system VALUES (1, 'Mercury', 4.3, false, true, 0, 1, 'Mercury is the first planet from the Sun and the smallest planet in the Solar System. It is a terrestrial planet with a heavily cratered surface due to the planet having no geological activity and an extremely tenuous atmosphere (called an exosphere). Despite being the smallest planet in the Solar System with a mean diameter of 4,880 km (3,030 mi), 38% of that of Earth.');
+INSERT INTO public.solar_system VALUES (2, 'Venus', 10.4, false, true, 0, 2, 'Venus is the second planet from the Sun. It is a rocky planet with a mass and size narrowly second in the Solar System to Earth, and with an atmosphere, which is the thickest of all four rocky planets of the Solar System and substantially thicker than Earths. Its orbit is the next closest to Earths, orbiting the Sun inferior inside of Earths orbit, appearing (like Mercury) in Earths sky always close to the Sun as either a morning star or evening star. In Earths sky it is also the natural object with the third highest maximum apparent brightness, after the Sun and the Moon, due to its proximity to Earth and the Sun, its size, and its highly reflective global cloud cover. Because of these prominent appearances in Earths sky, Venus has been, particularly among the other four star-like classical planets, a common and important object for humans, in their cultures and astronomy. ');
+INSERT INTO public.solar_system VALUES (3, 'Earth', 11.2, true, false, 1, 3, 'Earth is the third planet from the Sun and the only place known in the universe where life has originated and found habitability. While Earth may not contain the largest volumes of water in the Solar System, only Earth sustains liquid surface water, extending over 70.8% of the planet with its ocean, making it an ocean world. The polar regions currently retain most of all other water with large sheets of ice covering ocean and land, dwarfing Earths groundwater, lakes, rivers and atmospheric water. The other 29.2% of the Earths surface is land, consisting of continents and islands, and is widely covered by vegetation. Below the planets surface lies the crust, consisting of several slowly moving tectonic plates, which interact to produce mountain ranges, volcanoes, and earthquakes. Inside the Earths crust is a liquid outer core that generates the magnetosphere, deflecting most of the destructive solar winds and cosmic radiation.');
+INSERT INTO public.solar_system VALUES (4, 'Mars', 5.0, false, false, 2, 4, 'Mars is the fourth planet and the furthest terrestrial planet from the Sun. The reddish color of its surface is due to finely grained iron(III) oxide dust in the soil, giving it the nickname- the Red Planet. There is a sharp contrast between the two Martian hemispheres: the northern hemisphere is on average flatter and smoother than the southern hemisphere. The planets two poles are covered by water and carbon dioxide ice caps. Surrounding the Martian surface is a dynamic thin atmosphere (1% of Earths surface pressure), made primarily of carbon dioxide. Mars has two irregularly shaped natural satellites, Phobos and Deimos.');
+INSERT INTO public.solar_system VALUES (5, 'Jupiter', 59.5, false, true, 95, 5, 'Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass more than two and a half times that of all the other planets in the Solar System combined, and slightly less than one one-thousandth the mass of the Sun. Jupiter is the third brightest natural object in the Earths night sky after the Moon and Venus, and it has been observed since prehistoric times. It was named after Jupiter, the chief deity of ancient Roman religion. ');
 
 
 --
@@ -347,6 +383,13 @@ SELECT pg_catalog.setval('public.moon_moon_id_seq', 21, true);
 --
 
 SELECT pg_catalog.setval('public.planet_planet_id_seq', 13, true);
+
+
+--
+-- Name: solar_system_solar_system_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.solar_system_solar_system_id_seq', 5, true);
 
 
 --
@@ -389,14 +432,6 @@ ALTER TABLE ONLY public.moon
 
 
 --
--- Name: planet_and_moon planet_and_moon_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
---
-
-ALTER TABLE ONLY public.planet_and_moon
-    ADD CONSTRAINT planet_and_moon_pkey PRIMARY KEY (planet_id, moon_id);
-
-
---
 -- Name: planet planet_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
@@ -410,6 +445,22 @@ ALTER TABLE ONLY public.planet
 
 ALTER TABLE ONLY public.planet
     ADD CONSTRAINT planet_pkey PRIMARY KEY (planet_id);
+
+
+--
+-- Name: solar_system solar_system_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.solar_system
+    ADD CONSTRAINT solar_system_pkey PRIMARY KEY (solar_system_id);
+
+
+--
+-- Name: solar_system solar_system_planet_name_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.solar_system
+    ADD CONSTRAINT solar_system_planet_name_key UNIQUE (name);
 
 
 --
@@ -434,22 +485,6 @@ ALTER TABLE ONLY public.star
 
 ALTER TABLE ONLY public.moon
     ADD CONSTRAINT moon_planet_id_fkey FOREIGN KEY (planet_id) REFERENCES public.planet(planet_id);
-
-
---
--- Name: planet_and_moon planet_and_moon_moon_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
---
-
-ALTER TABLE ONLY public.planet_and_moon
-    ADD CONSTRAINT planet_and_moon_moon_id_fkey FOREIGN KEY (moon_id) REFERENCES public.moon(moon_id);
-
-
---
--- Name: planet_and_moon planet_and_moon_planet_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
---
-
-ALTER TABLE ONLY public.planet_and_moon
-    ADD CONSTRAINT planet_and_moon_planet_id_fkey FOREIGN KEY (planet_id) REFERENCES public.planet(planet_id);
 
 
 --
